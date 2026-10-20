@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt #importing the matplotlib library for plotting
 fastf1.Cache.enable_cache('cache') #enabling the cache for fastf1 to store data locally
 
 #picking a session that i want to analyse! im going to do my favourite race: baku 2024!
-session = fastf1.get_session(2026, 'Monza', 'R') #getting the race session for Baku 24
+session = fastf1.get_session(2024, 'Baku', 'R') #getting the race session for Baku 24
 session.load() #loading the session data
 
 #picking a driver (in this case piastri) and getting his lap data
@@ -21,19 +21,23 @@ plotting.setup_mpl()
 
 #now onto the actual analysis! im going to plot speed, throttle and brake data!
 
-fig, ax = plt.subplots(figsize=(12,6)) #creating a new plot so i can draw on the data
+fig, ax1 = plt.subplots(figsize=(12,6)) #creating a new plot so i can draw on the data
+fig, ax2 = plt.subplots(figsize=(12,6))
+fig, ax3 = plt.subplots(figsize=(12,6))
 
 #speed data plotting
-ax.plot(car_data['Time'], car_data['Speed'], label='Speed in km/h', color='blue') #plotting speed data over a lap in blue
+ax1.plot(car_data['Time'], car_data['Speed'], label='Speed in km/h', color='blue') #plotting speed data over a lap in blue
 
 #throttle data plotting
-ax.plot(car_data['Time'], car_data['Throttle'], label='Throttle in %', color='green') #plotting throttle data over a lap in green
+ax2.plot(car_data['Time'], car_data['Throttle'], label='Throttle in %', color='green') #plotting throttle data over a lap in green
 
 #brake data plotting
-ax.plot(car_data['Time'], car_data['Brake'], label='Brake in %', color='red') #plotting brake data over a lap in red
+ax3.plot(car_data['Time'], car_data['Brake'], label='Brake in %', color='red') #plotting brake data over a lap in red
 
 #show legend, essentially a little box that shows what each line represents, making the graph readable!
-ax.legend()
+ax1.legend()
+ax2.legend()
+ax3.legend()
 
 #opening the graph in a new window so i can see it and analyse it!
 plt.show()
